@@ -1,24 +1,21 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace PMW3Practice
 {
     public partial class FileSelectionForm : Form
     {
-        string[] files = new string[] { "CliffsFight4Skip", "ValeRingsSkip", "ZephyrSyphon",
-            "CatacombsDetonator", "CatacombsEnd", "GogekkaHeightsTriplePillarless",
-            "GogekkaHeightsEnd", "CanyonEarly", "ErwinsFightSkip",
-            "DungenFight", "ZenithEarly", "ZenithLate" };
-
         string appDataDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         string gameDirectory = @"Electronic Arts\Pac-Man World 3";
-        string savesDirectory = @"D:\PMW3\PMW3Practice\PracticeFiles";
+        string savesDirectory = @"PracticeFiles";
 
         public FileSelectionForm()
         {
             InitializeComponent();
 
+            var files = Directory.GetFiles(savesDirectory).Select(path => Path.GetFileName(path)).ToArray();
             cmbFile1.Items.AddRange(files);
             cmbFile2.Items.AddRange(files);
             cmbFile3.Items.AddRange(files);
