@@ -47,12 +47,12 @@ namespace PMW3Practice
 
         private void cmbFile2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            copyFile(files[cmbFile1.SelectedIndex], "B");
+            copyFile(files[cmbFile2.SelectedIndex], "B");
         }
 
         private void cmbFile3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            copyFile(files[cmbFile1.SelectedIndex], "C");
+            copyFile(files[cmbFile3.SelectedIndex], "C");
         }
 
         private void copyFile(FileItem fileItem, string slot)
