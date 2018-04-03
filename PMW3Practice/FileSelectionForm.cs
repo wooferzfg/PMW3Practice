@@ -42,24 +42,28 @@ namespace PMW3Practice
 
         private void cmbFile1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            copyFile(files[cmbFile1.SelectedIndex], "A");
+            copyFile(cmbFile1.SelectedIndex, "A");
         }
 
         private void cmbFile2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            copyFile(files[cmbFile2.SelectedIndex], "B");
+            copyFile(cmbFile2.SelectedIndex, "B");
         }
 
         private void cmbFile3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            copyFile(files[cmbFile3.SelectedIndex], "C");
+            copyFile(cmbFile3.SelectedIndex, "C");
         }
 
-        private void copyFile(FileItem fileItem, string slot)
+        private void copyFile(int index, string slot)
         {
-            var sourcePath = fileItem.FilePath;
-            var destPath = Path.Combine(appDataDirectory, gameDirectory, "PMW3" + slot);
-            File.Copy(sourcePath, destPath, true);
+            if (index >= 0 && index < files.Length)
+            {
+                var fileItem = files[index];
+                var sourcePath = fileItem.FilePath;
+                var destPath = Path.Combine(appDataDirectory, gameDirectory, "PMW3" + slot);
+                File.Copy(sourcePath, destPath, true);
+            }
         }
 
         struct FileItem
